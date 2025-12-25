@@ -46,3 +46,16 @@ if ! command -v starship &> /dev/null; then
 else
     echo "✅ Starship is already installed."
 fi
+
+# Install Neovim (Latest Stable)
+if ! command -v nvim &> /dev/null; then
+    echo "💤 Installing Neovim..."
+    sudo add-apt-repository ppa:neovim-ppa/unstable -y
+    sudo apt update
+    sudo apt install -y neovim
+else
+    echo "✅ Neovim is already installed."
+fi
+
+# Install dependencies for LazyVim plugins (treesitter, telescope, etc.)
+sudo apt install -y make gcc g++ unzip
