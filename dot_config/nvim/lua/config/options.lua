@@ -15,5 +15,5 @@ if vim.fn.has("wsl") == 1 then
     },
     cache_enabled = 0,
   }
--- No extra config needed for macOS or Standard Linux if xclip/pbcopy are installed
+  -- No extra config needed for macOS or Standard Linux if xclip/pbcopy are installed
 end
