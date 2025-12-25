@@ -81,3 +81,7 @@ alias reload="source ~/.zshrc"
 # --- The "Safe" Bottom Alias ---
 # This ensures 'btm' always points to the monitor, not the blockchain tool
 # alias btm='bottom'
+
+# Ubuntu-specific fixes
+alias bat='batcat'
+alias fd='fd-find'
