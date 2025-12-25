@@ -8,7 +8,7 @@ else
 fi
 
 # --- Smart Pathing ---
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/games"
 
 if [[ $IS_MAC ]]; then
     [[ -d "/opt/homebrew/bin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -43,11 +43,11 @@ export PATH="$HOME/.rokit/bin:$PATH"
 [[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
 
 clear
-figlet -f slant "WELCOME" | lolcat
+figlet -f slant "WELCOME" | lcat
 fastfetch
 
 echo -e "\e[1;90m ─────────── \e[1;36m󱐋 PROTOCOL_THOUGHT \e[1;90m───────────\e[0m"
-fortune -as | sed 's/^/  /' | lolcat
+fortune -as | sed 's/^/  /' | lcat
 echo -e "\e[1;90m ──────────────────────────────────────────\e[0m"
 echo " "
 

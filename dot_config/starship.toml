@@ -1,0 +1,66 @@
+# A floating, high-tech HUD layout
+format = """
+$os$username$hostname[](#21222c)\
+$directory\
+[](fg:#21222c bg:#44475a)\
+$git_branch\
+$git_status\
+[](fg:#44475a bg:#bd93f9)\
+$c$golang$nodejs$rust$python\
+[](fg:#bd93f9 bg:#ffb86c)\
+$cmd_duration\
+[](fg:#ffb86c)
+$character"""
+
+[os]
+disabled = false
+style = "bold white"
+
+[username]
+show_always = true
+style_user = "bold #bd93f9"
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = false
+style = "bold #ff79c6"
+format = "@[$hostname]($style) "
+
+[directory]
+style = "bg:#21222c fg:#f8f8f2"
+format = "[  $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = "󰊢 "
+style = "bg:#44475a fg:#8be9fd"
+format = "[[ $symbol$branch ]($style)]($style)"
+
+[git_status]
+style = "bg:#44475a fg:#ff5555"
+format = "[[($all_status$ahead_behind )](style)]($style)"
+
+[cmd_duration]
+style = "bg:#ffb86c fg:#282a36"
+format = "[ 󱎫 $duration ]($style)"
+
+[character]
+success_symbol = " [󱐋](bold #50fa7b) [󰄾](bold #50fa7b)"
+error_symbol = " [󱐋](bold #ff5555) [󰄾](bold #ff5555)"
+
+# Language Modules (Floating style)
+[nodejs]
+symbol = " "
+style = "bg:#bd93f9 fg:#282a36"
+format = "[[ $symbol($version) ]($style)]($style)"
+
+[rust]
+symbol = " "
+style = "bg:#bd93f9 fg:#282a36"
+format = "[[ $symbol($version) ]($style)]($style)"
+
+[python]
+symbol = " "
+style = "bg:#bd93f9 fg:#282a36"
+format = "[[ $symbol($version) ]($style)]($style)"
