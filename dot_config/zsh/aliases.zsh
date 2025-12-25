@@ -29,10 +29,6 @@ alias wget='wget2'
 
 alias dnslookup="dig +noall +answer"
 
-alias ga='git add'
-alias gs='git status'
-alias gc='git commit'
-
 alias ls='eza --group-directories-first --icons'
 alias ll='eza --group-directories-first --icons -lh'
 alias la='eza --group-directories-first --icons -a'
@@ -85,3 +81,73 @@ alias reload="source ~/.zshrc"
 # Ubuntu-specific fixes
 alias bat='batcat'
 alias fd='fd-find'
+
+# Ask for confirmation before overwriting or deleting
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# Grep with color for better readability
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Reload bash profile quickly
+alias reload='source ~/.bashrc' # Or ~/.zshrc or ~/.bash_profile
+
+alias c='clear'
+alias h='history'
+alias gh='history|grep'
+alias mkdir='mkdir -p'
+alias mv='mv -vi'
+alias cp='cp -vi'
+alias tree='tree -C'
+alias ping='ping -c 5'
+alias df='df -H'
+alias pbc='pbcopy'
+alias vim='nvim'
+alias gpgl='gpg --list-keys'
+
+alias p='python'
+alias p2='$HOME/.pyenv/shims/python2'
+alias p3='python3'
+
+alias reboot='sudo /sbin/reboot'
+alias rfinder='killall Finder'
+alias rdock='killall Dock'
+
+alias cat='bat --paging=never'
+alias gdu='gdu-go'
+alias ptop='bpytop'
+alias disk='gdu'
+alias grep='rg'
+alias top='btop'
+alias wget='wget2'
+
+alias dnslookup="dig +noall +answer"
+
+alias ga='git add'
+alias gs='git status'
+alias gc='git commit'
+alias gp='git push'
+alias gb='git branch'
+alias gco='git checkout'
+alias gaa='git add .'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
+# Share current dir
+alias pshare='python -m http.server 2121'
+alias rshare='ruby -run -e httpd . -p 2121'
+
+# Stealth (very slow) nmap
+alias snmap='nmap -f -T2 --data-length 8 --randomize-hosts -ttl 58'
+
+# local ip
+#alias ip='ifconfig | grep "inet "'
+
+# public ip
+#alias myip='curl ipinfo.io; echo'
+
+# combined
+alias ip='echo "Local ips:" && ifconfig | grep "inet " | awk '\''{printf "\t%s\n", $2}'\'' && echo "External ip:" && curl -s ipinfo.io/ip | awk '\''{printf "\t%s\n", $0}'\'';'
+

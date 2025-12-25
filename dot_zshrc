@@ -1,5 +1,21 @@
+# --- Path & Environment ---
+export PATH="$HOME/.local/bin:$PATH"
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$BREW_HOME"
+
+# Node/NVM (Keep this, but we can make it faster later)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Rust, Aftman, Rokit
+. "$HOME/.cargo/env"
+. "$HOME/.aftman/env"
+. "$HOME/.rokit/env"
+export PATH="$HOME/.rokit/bin:$PATH"
+
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
-eval "$(starship init zsh)"
+[[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
 
 clear
 figlet -f slant "WELCOME" | lolcat
@@ -10,3 +26,9 @@ fortune -as | sed 's/^/  /' | lolcat
 echo -e "\e[1;90m ──────────────────────────────────────────\e[0m"
 echo " "
 
+# --- Initializations ---
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+# Enable Zsh Auto-completion (The better way)
+autoload -Uz compinit && compinit
