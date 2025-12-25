@@ -102,3 +102,19 @@ elif [ "$OS_TYPE" == "Linux" ]; then
     sudo mv /tmp/win32yank.exe /usr/local/bin/
   fi
 fi
+
+# Install Zsh Plugins
+ZSH_PLUGINS_DIR="${HOME}/.zsh-plugins"
+mkdir -p "$ZSH_PLUGINS_DIR"
+
+# Autosuggestions
+if [ ! -d "$ZSH_PLUGINS_DIR/zsh-autosuggestions" ]; then
+  echo "🔍 Installing zsh-autosuggestions..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_DIR/zsh-autosuggestions"
+fi
+
+# Syntax Highlighting (You'll want this too!)
+if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
+  echo "🔍 Installing zsh-syntax-highlighting..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting"
+fi

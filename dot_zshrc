@@ -3,6 +3,13 @@ export PATH="$HOME/.local/bin:$PATH"
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
 
+# Load Plugins
+source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Customize Suggestion Color (Optional - make it a subtle gray)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#586e75"
+
 # Node/NVM (Keep this, but we can make it faster later)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
