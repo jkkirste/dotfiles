@@ -39,8 +39,8 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.rokit/env"
 export PATH="$HOME/.rokit/bin:$PATH"
 
-[[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
-[[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
+[[ -f ~/.config/zsh/aliases.zsh ]] && source ~/.config/zsh/aliases.zsh
+[[ -f ~/.config/zsh/functions.zsh ]] && source ~/.config/zsh/functions.zsh
 
 clear
 figlet -f slant "WELCOME" | lcat
@@ -56,4 +56,30 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # Enable Zsh Auto-completion (The better way)
-autoload -Uz compinit && compinit
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+
+autoload -Uz compinit
+mkdir -p "$XDG_CACHE_HOME/zsh"
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump" -C
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="
+  --color=fg:-1,bg:-1,hl:#5fafff \
+  --color=fg+:#ffffff,bg+:#262626,hl+:#5fd7ff \
+  --info=inline --layout=reverse --border --height=40% \
+  --prompt='󰭎 ' --pointer='▶' --marker='󰄬'
+"
+# History Settings
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+setopt HIST_EXPIRE_DUPS_FIRST # Delete oldest duplicates first
+setopt HIST_IGNORE_DUPS       # Don't record a line if it's the same as the last
+setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicates from history
+setopt HIST_REDUCE_BLANKS     # Remove unnecessary blanks
+setopt HIST_IGNORE_SPACE      # Don't record lines starting with a space
+setopt NO_BEEP
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_GLOB

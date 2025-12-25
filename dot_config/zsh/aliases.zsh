@@ -54,12 +54,6 @@ alias rshare='ruby -run -e httpd . -p 2121'
 # Stealth (very slow) nmap
 alias snmap='nmap -f -T2 --data-length 8 --randomize-hosts -ttl 58'
 
-# local ip
-#alias ip='ifconfig | grep "inet "'
-
-# public ip
-#alias myip='curl ipinfo.io; echo'
-
 # combined
 alias ip='echo "Local ips:" && ifconfig | grep "inet " | awk '\''{printf "\t%s\n", $2}'\'' && echo "External ip:" && curl -s ipinfo.io/ip | awk '\''{printf "\t%s\n", $0}'\'';'
 

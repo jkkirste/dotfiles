@@ -1,6 +1,5 @@
 [user]
 	name = ᒎᐞᑦᐤᒃ
-	email = jkkirste@gmail.com
 [color]
 	ui = auto
 [core]
@@ -13,3 +12,14 @@
 	navigate = true
 [merge]
 	conflictstyle = diff3
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[rerere]
+	enabled = true
+[fetch]
+	prune = true
+

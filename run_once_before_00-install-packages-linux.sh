@@ -4,6 +4,7 @@
 # set -u: exit on unset variables
 # set -o pipefail: catch errors in piped commands
 set -euo pipefail
+IFS=$'\n\t'
 
 echo "🚀 Starting Strict dotfile tool installation..."
 
@@ -24,7 +25,7 @@ if [ "$OS_TYPE" == "Darwin" ]; then
     exit 1
   fi
 
-  brew install ripgrep bat fd fzf zoxide git-delta starship neovim \
+  brew install ripgrep bat fd zoxide git-delta starship neovim \
     bottom fastfetch fortune lcat
 
 # --- 2. LINUX / WSL INSTALLATION (APT + Cargo) ---
@@ -32,7 +33,7 @@ elif [ "$OS_TYPE" == "Linux" ]; then
   echo "🐧 Detected Linux (WSL: $IS_WSL). Using APT..."
 
   sudo apt update
-  sudo apt install -y ripgrep bat fd-find fzf zoxide git-delta curl xclip \
+  sudo apt install -y ripgrep bat fd-find zoxide git-delta curl xclip \
     make gcc g++ unzip fortune-mod fastfetch
 
   # Neovim (using PPA for latest unstable)
@@ -76,6 +77,18 @@ fi
 # Syntax Highlighting
 if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting"
+fi
+
+# --- FZF Modern Installation ---
+if [ ! -d "$HOME/.fzf" ]; then
+  echo "🔍 Cloning FZF..."
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  echo "⚙️ Running FZF Installer..."
+  # --all: installs completions and keybindings
+  # --no-bash/--no-fish: only focuses on what you need
+  ~/.fzf/install --all --no-bash --no-fish
+else
+  echo "✅ FZF is already installed via Git."
 fi
 
 echo "✨ All CLI tools installed. Any failure above would have stopped this script."
